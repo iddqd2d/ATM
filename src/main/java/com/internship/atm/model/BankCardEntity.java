@@ -18,8 +18,8 @@ import java.time.LocalDate;
 @Table(name = "bank_card")
 public class BankCardEntity extends MappedEntity {
 
-    @Column
-    private Long number;
+    @Column (name = "card_number")
+    private Long cardNumber;
 
     @Column (name = "valid_thru")
     private LocalDate validThru;

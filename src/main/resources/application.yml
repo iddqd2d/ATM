@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/atm?serverTimezone=UTC
+    url: jdbc:postgresql://localhost:5432/postgres?serverTimezone=UTC
     username: postgres
     password: 1111
   jpa:
@@ -10,6 +10,13 @@ spring:
       hibernate:
         temp:
           use_jdbc_metadata_defaults: false
+  flyway:
+    enabled: true
+    user: flyway
+    password: flyway
+    url: ${spring.datasource.url}
+    baseline-on-migrate: true
+    out-of-order: true
 logging:
   level:
     org.springframework: INFO
