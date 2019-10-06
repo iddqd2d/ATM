@@ -22,7 +22,7 @@ public class BankCardEntity extends MappedEntity {
     private Long cardNumber;
 
     @Column (name = "valid_thru")
-    private LocalDate validThru;
+    private Long validThru;
 
     @Column
     private Integer cvv;
