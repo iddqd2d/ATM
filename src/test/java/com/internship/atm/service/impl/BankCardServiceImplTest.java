@@ -22,8 +22,7 @@ public class BankCardServiceImplTest {
 
     @Test
     public void loadBankCardEntityByNumber() {
-        BankCardEntity entity = bankCardService.loadBankCardEntityByNumber("1");
-        log.info("zzzzzzzzzzzzzzzzzzz");
+        BankCardEntity entity = bankCardService.loadBankCardEntityByNumber("2");
        log.info(entity.toString());
     }
 

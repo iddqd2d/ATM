@@ -1,5 +1,7 @@
 package com.internship.atm.service.impl;
 
+import com.internship.atm.controller.handler.exception.BankCardNotFoundExeption;
+import com.internship.atm.controller.handler.exception.NotEnoughMoneyExeption;
 import com.internship.atm.model.BankCardEntity;
 import com.internship.atm.repository.BankCardRepository;
 import com.internship.atm.service.BankCardService;
@@ -14,8 +16,7 @@ public class BankCardServiceImpl implements BankCardService {
 
     @Override
     public BankCardEntity loadBankCardEntityByNumber(String cardNumber) {
-        BankCardEntity bankCardEntity = repository.getBankCardEntityByCardNumber(cardNumber).orElseThrow(null);
-        return bankCardEntity;
+        return repository.getBankCardEntityByCardNumber(cardNumber).orElseThrow(() -> new BankCardNotFoundExeption(cardNumber));
     }
 
     @Override
@@ -28,6 +29,10 @@ public class BankCardServiceImpl implements BankCardService {
     @Override
     public void getCash(String cardNumber, long cash) {
         BankCardEntity entity = loadBankCardEntityByNumber(cardNumber);
+        long result = entity.getBalance() - cash;
+        if (result < 0){
+                throw new NotEnoughMoneyExeption(result);
+        }
         entity.setBalance(entity.getBalance() - cash);
         repository.save(entity);
     }
