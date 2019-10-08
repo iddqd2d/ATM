@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT EXISTS ATM
+CREATE TABLE IF NOT EXISTS bank_card
 (
-  id bigserial NOT NULL,
-  card_number bigint,
+  id serial NOT NULL,
+  card_number character varying(255),
   valid_thru bigint,
   cvv int,
   pin int,

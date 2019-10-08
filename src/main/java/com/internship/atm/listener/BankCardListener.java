@@ -10,7 +10,7 @@ public class BankCardListener {
 
     @PrePersist
     public void prePersist(BankCardEntity entity) {
-        entity.setCardNumber(ThreadLocalRandom.current().nextLong(1L, 9999_9999_9999_9999L))
+        entity.setCardNumber(String.valueOf(ThreadLocalRandom.current().nextLong(1L, 9999_9999_9999_9999L)))
                 .setCvv(ThreadLocalRandom.current().nextInt(0, 999))
                 .setPin(ThreadLocalRandom.current().nextInt(0, 9999))
                 .setValidThru(LocalDate.now().plusYears(3).toEpochDay());
