@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class BankCardServiceImpl implements BankCardService {
         return repository.getBankCardEntityByCardNumber(cardNumber).orElseThrow(() -> new BankCardNotFoundException(cardNumber));
     }
 
+    @Transactional
     @Override
     public void addCash(String cardNumber, long cash) {
         if (!bills.contains(cash)) {
@@ -37,6 +39,7 @@ public class BankCardServiceImpl implements BankCardService {
         repository.save(entity);
     }
 
+    @Transactional
     @Override
     public void getCash(String cardNumber, long cash) {
         if (!bills.contains(cash)) {
@@ -51,6 +54,7 @@ public class BankCardServiceImpl implements BankCardService {
         repository.save(entity);
     }
 
+    @Transactional
     @Override
     public void transferCash(String fromCardNumber, String toCardNumber, long cash) {
         getCash(fromCardNumber, cash);
