@@ -1,7 +1,7 @@
 package com.internship.atm.controller.handler;
 
-import com.internship.atm.controller.handler.exception.BankCardNotFoundExeption;
-import com.internship.atm.controller.handler.exception.NotEnoughMoneyExeption;
+import com.internship.atm.controller.handler.exception.BankCardNotFoundException;
+import com.internship.atm.controller.handler.exception.NotEnoughMoneyException;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @Component
 public class BaseHandler {
 
-    @ExceptionHandler(BankCardNotFoundExeption.class)
-    public BaseResponse handlerNotFoundException(BankCardNotFoundExeption ex) {
+    @ExceptionHandler(BankCardNotFoundException.class)
+    public BaseResponse handlerNotFoundException(BankCardNotFoundException ex) {
         return BaseResponse.buildErrorResponse(404, ex.getMessage());
     }
 
-    @ExceptionHandler(BankCardNotFoundExeption.class)
-    public BaseResponse handlerNotEnoughMoneyExeption(NotEnoughMoneyExeption ex) {
+    @ExceptionHandler(BankCardNotFoundException.class)
+    public BaseResponse handlerNotEnoughMoneyExeption(NotEnoughMoneyException ex) {
         return BaseResponse.buildErrorResponse(404, ex.getMessage());
     }
 

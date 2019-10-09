@@ -7,11 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Getter
 @Setter
-public class BankCardNotFoundExeption extends RuntimeException {
+public class BankCardNotFoundException extends RuntimeException {
 
     private static String message = "Cannot find card by number: ";
 
-    public BankCardNotFoundExeption(String number) {
+    public BankCardNotFoundException(String number) {
         super(message + number);
         log.error(message + number);
     }
