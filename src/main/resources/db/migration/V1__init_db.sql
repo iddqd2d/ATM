@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS bank_card
   card_number character varying(255),
   valid_thru bigint,
   cvv int,
-  pin int,
+  pin character varying(255),
   balance bigint,
   PRIMARY KEY (id)
 );

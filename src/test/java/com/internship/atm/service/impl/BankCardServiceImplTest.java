@@ -3,7 +3,6 @@ package com.internship.atm.service.impl;
 import com.internship.atm.model.BankCardEntity;
 import com.internship.atm.service.BankCardService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class BankCardServiceImplTest {
 
     @Test
     public void loadBankCardEntityByNumber() {
-        BankCardEntity entity = bankCardService.loadBankCardEntityByNumber("2");
+        BankCardEntity entity = bankCardService.loadBankCardEntityByNumber("1");
        log.info(entity.toString());
     }
 

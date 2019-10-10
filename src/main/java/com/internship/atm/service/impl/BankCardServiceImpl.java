@@ -8,6 +8,7 @@ import com.internship.atm.repository.BankCardRepository;
 import com.internship.atm.service.BankCardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,6 @@ public class BankCardServiceImpl implements BankCardService {
     @Override
     public void transferCash(String fromCardNumber, String toCardNumber, long cash) {
         getCash(fromCardNumber, cash);
-        addCash(toCardNumber, cash);
+        addCash(DigestUtils.md5Hex(toCardNumber), cash);
     }
 }

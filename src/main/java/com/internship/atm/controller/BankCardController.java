@@ -3,6 +3,7 @@ package com.internship.atm.controller;
 import com.internship.atm.controller.handler.BaseHandler;
 import com.internship.atm.service.BankCardService;
 import lombok.AllArgsConstructor;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,6 @@ public class BankCardController extends BaseHandler {
         String cardFrom = SecurityContextHolder.getContext().getAuthentication().getName();
         bankCardService.transferCash(cardFrom, cardTo, cash);
         return bankCardService.loadBankCardEntityByNumber(cardFrom).toString()
-                + bankCardService.loadBankCardEntityByNumber(cardTo).toString();
+                + bankCardService.loadBankCardEntityByNumber(DigestUtils.md5Hex(cardTo)).toString();
     }
 }

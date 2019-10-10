@@ -29,7 +29,7 @@ public class BankCardEntity extends MappedEntity {
     private Integer cvv;
 
     @Column
-    private Integer pin;
+    private String pin;
 
     @Column
     private Long balance;
